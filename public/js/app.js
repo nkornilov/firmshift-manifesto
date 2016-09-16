@@ -27,6 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
   //   text: manifestos[screenIndex].text
   // });
 
+  astronomy_manifesto({
+    region: ".js-hc-container"
+  });
+
   $("body").on('click', function () {
     // screenIndex++;
     // if (screenIndex > manifestos.length - 1) screenIndex = 0;
