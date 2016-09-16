@@ -1,0 +1,14 @@
+.ui-static-wrap, .ui-dynamic-wrap {
+    margin: 5px 0 0 15px;
+    width: 80%;
+    font-size: 44px;
+}
+
+.ui-node {
+    margin: 0 3px;
+    top: 1px;
+}
+
+.ui-path-svg {
+    stroke-width: 6px;
+}
