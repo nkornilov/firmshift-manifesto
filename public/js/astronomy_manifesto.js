@@ -144,16 +144,16 @@ function seventhAnimation (options) {
   updateLine(".s" + options.nodes[0].id + ".t" + options.nodes[4].id, options.nodes[5], options.nodes[4], durationForCreate);
   updateLine(".s" + options.nodes[0].id + ".t" + options.nodes[4].id, options.nodes[5], options.nodes[6], durationForCreate);
 
-  updateLine(".s" + options.nodes[1].id + ".t" + options.nodes[2].id, options.nodes[1], options.nodes[4], durationForCreate);
-  updateLine(".s" + options.nodes[0].id + ".t" + options.nodes[1].id, options.nodes[1], options.nodes[8], durationForCreate);
-  appendLineAstronomy(options.nodes[4], options.nodes[7], options.svgGroup, durationForCreate );
+  updateLine(".s" + options.nodes[0].id + ".t" + options.nodes[1].id, options.nodes[4], options.nodes[1], durationForCreate);
+  updateLine(".s" + options.nodes[1].id + ".t" + options.nodes[2].id, options.nodes[7], options.nodes[4], durationForCreate);
+  appendLineAstronomy(options.nodes[1], options.nodes[8], options.svgGroup, durationForCreate );
 
 }
 
 function eighthAnimation (options) {
-  updateLine(".s" + options.nodes[1].id + ".t" + options.nodes[2].id, options.nodes[1], options.nodes[2], durationForCreate);
-  updateLine(".s" + options.nodes[4].id + ".t" + options.nodes[7].id, options.nodes[2], options.nodes[6], durationForCreate);
-  updateLine(".s" + options.nodes[0].id + ".t" + options.nodes[1].id, options.nodes[1], options.nodes[4], durationForCreate);
+  updateLine(".s" + options.nodes[1].id + ".t" + options.nodes[2].id, options.nodes[6], options.nodes[2], durationForCreate);
+  updateLine(".s" + options.nodes[1].id + ".t" + options.nodes[8].id, options.nodes[1], options.nodes[4], durationForCreate);
+  updateLine(".s" + options.nodes[0].id + ".t" + options.nodes[1].id, options.nodes[2], options.nodes[1], durationForCreate);
 
   updateLine(".s" + options.nodes[0].id + ".t" + options.nodes[5].id, options.nodes[3], options.nodes[8], durationForCreate);
   updateLine(".s" + options.nodes[2].id + ".t" + options.nodes[0].id, options.nodes[3], options.nodes[0], durationForCreate);
