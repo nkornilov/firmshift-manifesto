@@ -15,34 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   ];
 
-  var screenIndex = 0;
-  //
-  // dynamic_manifesto({
-  //   region: '.js-dynamic-container',
-  //   charArrayFromText: manifestos[screenIndex].text.capitalize()
-  // });
-  //
-  // static_manifesto({
-  //   region: ".js-static-container",
-  //   text: manifestos[screenIndex].text
-  // });
-
   astronomy_manifesto({
     region: ".js-hc-container"
   });
 
   $("body").on('click', function () {
-    // screenIndex++;
-    // if (screenIndex > manifestos.length - 1) screenIndex = 0;
-    // dynamic_manifesto({
-    //   region: '.js-dynamic-container',
-    //   charArrayFromText: manifestos[screenIndex].text.capitalize()
-    // });
-    //
-    // static_manifesto({
-    //   region: ".js-static-container",
-    //   text: manifestos[screenIndex].text
-    // });
+    if (window.isAnimating) return false;
 
     astronomy_manifesto({
       region: ".js-hc-container"

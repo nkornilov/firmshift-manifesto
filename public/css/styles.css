@@ -13,10 +13,13 @@ body {
     cursor: pointer;
 }
 
+body.isAnimating {
+    cursor: default;
+}
+
 .ui-section {
     width: 100%;
     height: 100%;
-    cursor: pointer;
 }
 
 .ui-bg-light-green {

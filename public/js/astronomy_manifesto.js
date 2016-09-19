@@ -7,19 +7,21 @@ var text = [
 
 function astronomy_manifesto(options) {
   var nodes = [
-    { y: 123, x: 152, id: 0 },
-    { y: 123, x: 577, id: 1 },
-    { y: 213, x: 90, id: 2 },
-    { y: 213, x: 320, id: 3 },
-    { y: 213, x: 509, id: 4 },
-    { y: 303, x: 219, id: 5 },
-    { y: 303, x: 314, id: 6 },
-    { y: 303, x: 457, id: 7 },
-    { y: 303, x: 700, id: 8 },
-    { y: 394, x: 312, id: 9 }
+    { y: 108, x: 152, id: 0 },
+    { y: 108, x: 577, id: 1 },
+    { y: 183, x: 90, id: 2 },
+    { y: 183, x: 320, id: 3 },
+    { y: 183, x: 509, id: 4 },
+    { y: 258, x: 219, id: 5 },
+    { y: 258, x: 314, id: 6 },
+    { y: 258, x: 457, id: 7 },
+    { y: 258, x: 700, id: 8 },
+    { y: 334, x: 312, id: 9 }
   ];
 
   $(options.region).empty();
+  window.isAnimating = true;
+  $("body").addClass("isAnimating");
 
   appendNodesAndDrawPath({
     nodes: nodes,
@@ -30,6 +32,11 @@ function astronomy_manifesto(options) {
     text: text,
     region: options.region
   });
+
+  setTimeout(function () {
+    $("body").removeClass("isAnimating");
+    window.isAnimating = false;
+  }, 4000);
 }
 
 var letterAppendingSpeed = 65;
@@ -76,7 +83,6 @@ function appendNodesAndDrawPath(options) {
       .attr("cx", options.nodes[i].x)
       .attr("cy", options.nodes[i].y)
       .attr("r", 7);
-
 
     if (i == 1) firstAnimation({ nodes: options.nodes, svgGroup: svgGroup });
     if (i == 2) secondAnimation({ nodes: options.nodes, svgGroup: svgGroup });
@@ -159,7 +165,6 @@ function eighthAnimation (options) {
   updateLine(".s" + options.nodes[2].id + ".t" + options.nodes[0].id, options.nodes[3], options.nodes[0], durationForCreate);
   updateLine(".s" + options.nodes[0].id + ".t" + options.nodes[3].id, options.nodes[9], options.nodes[5], durationForCreate);
   updateLine(".s" + options.nodes[0].id + ".t" + options.nodes[4].id, options.nodes[9], options.nodes[7], durationForCreate);
-
 }
 
 function appendLineAstronomy(source, target, svgGroup, duration) {
