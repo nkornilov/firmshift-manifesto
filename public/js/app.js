@@ -15,19 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   ];
 
-  astronomy_manifesto({
-    region: ".js-hc-container"
-  });
-
   $("body").on('click', function () {
-    if (window.isAnimating) return false;
 
-    astronomy_manifesto({
-      region: ".js-hc-container"
+    astronomy_manifesto_v2({
+      region: ".js-static-container"
     });
+
   })
-
-
-
 
 });

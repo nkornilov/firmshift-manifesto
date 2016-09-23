@@ -39,7 +39,7 @@ function astronomy_manifesto(options) {
   }, 4000);
 }
 
-var letterAppendingSpeed = 65;
+var letterAppendingSpeed = 85;
 var durationForCreate = letterAppendingSpeed*5.12;
 
 function appendArrayOfStrings(options) {
@@ -85,13 +85,13 @@ function appendNodesAndDrawPath(options) {
       .attr("r", 7);
 
     if (i == 1) firstAnimation({ nodes: options.nodes, svgGroup: svgGroup });
-    if (i == 2) secondAnimation({ nodes: options.nodes, svgGroup: svgGroup });
-    if (i == 3) thirdAnimation({ nodes: options.nodes, svgGroup: svgGroup });
-    if (i == 4) fourthAnimation({ nodes: options.nodes, svgGroup: svgGroup });
-    if (i == 5) fifthAnimation({ nodes: options.nodes, svgGroup: svgGroup });
-    if (i == 6) sixthAnimation({ nodes: options.nodes, svgGroup: svgGroup });
-    if (i == 7) seventhAnimation({ nodes: options.nodes, svgGroup: svgGroup });
-    if (i == 8) eighthAnimation({ nodes: options.nodes, svgGroup: svgGroup });
+    if (i == 3) secondAnimation({ nodes: options.nodes, svgGroup: svgGroup });
+    if (i == 4) thirdAnimation({ nodes: options.nodes, svgGroup: svgGroup });
+    if (i == 6) fourthAnimation({ nodes: options.nodes, svgGroup: svgGroup });
+    if (i == 7) fifthAnimation({ nodes: options.nodes, svgGroup: svgGroup });
+    if (i == 8) sixthAnimation({ nodes: options.nodes, svgGroup: svgGroup });
+    if (i == 9) seventhAnimation({ nodes: options.nodes, svgGroup: svgGroup });
+    if (i == 10) eighthAnimation({ nodes: options.nodes, svgGroup: svgGroup });
     i++;
 
     if (i == options.nodes.length) {
@@ -176,16 +176,6 @@ function appendLineAstronomy(source, target, svgGroup, duration) {
     .transition()
     .duration(duration)
     .attr("d", d);
-}
-
-function hideLine(source, target, duration) {
-  var d = ["M", source.x, source.y, "L", source.x, source.y].join(" ");
-  var selector = ".s" + source.id + ".t" + target.id;
-  d3.select(selector)
-    .transition()
-    .duration(duration)
-    .attr("d", d)
-    .remove();
 }
 
 function updateLine(selector, source, target, duration) {

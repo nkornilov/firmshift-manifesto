@@ -3,8 +3,16 @@
     src: url("../fonts/Maax/Maax.otf");
 }
 
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    box-sizing:         border-box;
+}
+
 html, body {
     height: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 body {
@@ -30,8 +38,14 @@ body.isAnimating {
     background: #EA5C65;
 }
 
+.ui-bg-brown-pie {
+    background: #A1732D;
+}
+
 .ui-color-peach {
     color: #EA5C65;
+    font-size: 48px;
+    text-transform: lowercase;
 }
 
 .ui-color-brown {
@@ -47,6 +61,7 @@ body.isAnimating {
     margin: 0 auto;
     width: 40%;
     font-size: 72px;
+    height: 100%;
 }
 
 .ui-svg-container {
