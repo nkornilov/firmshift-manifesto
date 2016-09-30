@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var manifestos = [
     {
-      text: "use astronomy to make your move in music industry"
+      text: "Use astronomy to make your move in music industry"
     },
     {
       text: "from online insuring to a sure thing"
@@ -15,19 +15,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   ];
 
-  astronomy_manifesto({
-    region: ".js-hc-container"
+  astronomy_v2({
+    region: ".js-hc-container",
+    text: [
+      ["Use", "astronomy"],
+      ["to", "make", "your"],
+      ["move", "in", "the", "music"],
+      ["industry"]
+    ]
   });
-
-  $("body").on('click', function () {
-    if (window.isAnimating) return false;
-
-    astronomy_manifesto({
-      region: ".js-hc-container"
-    });
-  })
-
-
 
 
 });

@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "Maax";
-    src: url("../fonts/Maax/Maax.otf");
+    font-family: "Circular Book";
+    src: url("../fonts/circular-book.woff");
 }
 
 html, body {
@@ -11,7 +11,7 @@ html, body {
 
 body {
     background: #EEE;
-    font-family: "Maax";
+    font-family: "Circular Book";
     cursor: pointer;
 }
 
@@ -39,13 +39,25 @@ body.isAnimating {
 .ui-color-brown {
     color: #674133;
 }
+
 .ui-color-red-svg {
     font-size: 14px;
     color: #E05C5B;
 }
 
+@keyframes charAnimation {
+    0% {
+        color: #EA5C65;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0);
+    }
+    50% {
+        color: #674133;
+        text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
+    }
+}
+
 .ui-static-wrap, .ui-dynamic-wrap, .ui-hc-wrap {
-    position:relative;
+    position: relative;
     margin: 0 auto;
     width: 40%;
     font-size: 72px;
@@ -57,6 +69,11 @@ body.isAnimating {
     height: 100%;
     top: 0;
     left: 0;
+}
+
+.ui-string {
+    position: relative;
+    /*z-index: 1;*/
 }
 
 .ui-manifesto-word {
@@ -83,4 +100,12 @@ body.isAnimating {
     fill: none;
     stroke: rgba(255, 255, 255, .4);
     stroke-width: 10;
+}
+
+.ui-word {
+    color: #674133;
+    opacity: .1;
+    -webkit-animation: charAnimation 1s;
+    -o-animation: charAnimation      1s;
+    animation: charAnimation         1s;
 }

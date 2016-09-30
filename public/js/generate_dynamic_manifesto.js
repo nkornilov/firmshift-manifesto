@@ -32,7 +32,7 @@ function dynamic_manifesto(options) {
 }
 
 function generateCharTemplate(char) {
-  return '<span class="ui-color-brown">' + char + '</span>';
+  return '<span class="ui-color-brown ui-char-animation">' + char + '</span>';
 }
 
 function generatePathHC(nodes, svg) {

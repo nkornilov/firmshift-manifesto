@@ -1,1 +1,0 @@
-These web font-to-OpenType-converted fonts have complete glyphs.
