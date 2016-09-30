@@ -105,7 +105,4 @@ body.isAnimating {
 .ui-word {
     color: #674133;
     opacity: .1;
-    -webkit-animation: charAnimation 1s;
-    -o-animation: charAnimation      1s;
-    animation: charAnimation         1s;
 }
