@@ -3,8 +3,6 @@ var global = {
 };
 
 function astronomy_v2(options) {
-  
-  console.log(options, global.animationIntervalId )
   options.dotRadius = 7;
   $(options.region).empty();
   if (global.animationIntervalId) clearInterval(global.animationIntervalId);

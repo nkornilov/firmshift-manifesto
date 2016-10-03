@@ -36,8 +36,9 @@ body.isAnimating {
     position: relative;
     margin: 5% auto;
     width: 48%;
+    font-family: "Circular Book", Helvetica;
     font-size: 82px;
-    font-family: "Circular Book";
+    font-weight: bold;
 }
 
 .ui-svg-container {
