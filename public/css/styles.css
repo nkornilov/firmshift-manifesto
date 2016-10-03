@@ -77,4 +77,9 @@ body.isAnimating {
 .ui-word {
     color: #674133;
     opacity: .1;
+    position: relative;
+}
+
+.ui-word.ui-upper {
+    z-index: 1;
 }

@@ -38,8 +38,8 @@ function runManifesto (manifesto) {
       ["data", "science", "and", "art"],
     ],
     styles: {
-      "font-size": "42px"
+      "font-size": "52px"
     },
-    dotRadius: 4
+    dotRadius: 6
   });
 }

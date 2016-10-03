@@ -33,21 +33,26 @@ function animateWordsFadeIn(options) {
 
 function appendArrayOfStrings(options) {
   return new Promise(function (resolve, reject) {
-    var nodes = global.nodes;
+    var nodes = _.clone(global.nodes);
     var index = 0;
     _.each(options.text, function (phrase, j) {
       $(options.region).append(getStringTemplate(j));
       var $currentString = $(".js-string-" + j);
       _.each(phrase, function (word, i) {
         index++;
-        $currentString.append(getWordTemplate(word));
+        var className = Math.random() > 0.5 ? "ui-upper" : "";
+        $currentString.append(getWordTemplate(className, word));
         $currentString.append(getNodeTemplate("js-node-" + index));
-        let stringHeight = $currentString.height() * j;
-        let $currentNode = $(".js-node-" + index)[0];
+        let $currentNode = $(".js-node-" + index);
+        $currentNode.css({
+          width: global.dotRadius*2,
+          height: global.dotRadius*2
+        });
+
 
         nodes.push({
-          x: $currentNode.offsetLeft,
-          y: stringHeight + $currentNode.offsetTop,
+          x: $currentNode[0].offsetLeft + global.dotRadius,
+          y: $currentNode[0].offsetTop + global.dotRadius,
           id: index
         })
       });
@@ -58,11 +63,12 @@ function appendArrayOfStrings(options) {
 
 function appendPureText(options) {
   return new Promise(function (resolve, reject) {
-    var nodes = [];
+    var nodes = _.clone(global.nodes);
     var index = 0;
     _.each(options.text, function (word, i) {
       index++;
-      $(options.region).append(getWordTemplate(word));
+      var className = Math.random() > 0.5 ? "ui-upper" : "";
+      $(options.region).append(getWordTemplate(className, word));
       $(options.region).append(getNodeTemplate("js-node-" + index));
       let $currentNode = $(".js-node-" + index);
       $currentNode.css({
@@ -83,15 +89,15 @@ function getNodeTemplate(className) {
   return '<div class="ui-node js-node ' + className + '"></div>';
 }
 
-function getWordTemplate(word) {
-  return '<span class="ui-word js-word">' + word + '</span>';
+function getWordTemplate(className, word) {
+  return '<span class="ui-word js-word ' + className + '">' + word + '</span>';
 }
 
 function getStringTemplate(i) {
   return '<div class="ui-string js-string-' + i + '"></div>';
 }
 
-var durationForCreate = 250;
+var durationForCreate = 450;
 
 
 function appendNodesAndDrawPath(options) {
@@ -127,7 +133,7 @@ function appendNodesAndDrawPath(options) {
     appendRandomNodes(newOptions).then(function () {
       appendLines(newOptions);
     });
-  }, 3500);
+  }, 6500);
 
 }
 
@@ -135,14 +141,17 @@ function appendNodesAndDrawPath(options) {
 function appendRandomNodes(options) {
   return new Promise(function (resolve, reject) {
     _.each(options.nodes, function (node, i) {
-      var timeout = 300 * getRandomArbitrary(.8, 2.5);
+      var timeout = durationForCreate * getRandomArbitrary(1.5, 4);
       setTimeout(function () {
         options.svgGroup.append("circle")
           .attr("class", "ui-node-svg")
           .attr("cx", options.nodes[i].x)
           .attr("cy", options.nodes[i].y)
+          .attr("r", 0)
+          .transition()
+          .duration(200)
           .attr("r", options.dotRadius || 7);
-        if (i === options.nodes.length - 1) {
+        if (i === options.nodes.length - 3) {
           resolve(options);
         }
       }, timeout);
@@ -169,8 +178,8 @@ function appendLines(options) {
         appendedPaths.push({source: source, target: target});
         if (yetNoPath) {
           setTimeout(function () {
-            appendLineAstronomy(source, target, options.svgGroup, durationForCreate * getRandomArbitrary(1.5, 2.8));
-          }, durationForCreate * getRandomArbitrary(0, 1.5))
+            appendLineAstronomy(source, target, options.svgGroup, durationForCreate * getRandomArbitrary(1.5, 3));
+          }, durationForCreate * getRandomArbitrary(1.8, 2.6))
         }
       } else {
         i--;
@@ -178,21 +187,24 @@ function appendLines(options) {
     }
     setTimeout(function () {
       hideLines(appendedPaths, options.svgGroup);
-    }, 1500)
+    }, 3500)
   })
 }
 
 function hideLines(paths, svgGroup) {
   _.each(paths, function (path) {
-    hideLine(path.source, path.target, 400 * getRandomArbitrary(.5, 3))
+    hideLine(path.source, path.target, 600)
   });
+  hideNodes(svgGroup, 900);
+}
+
+function hideNodes (svgGroup, duration) {
   setTimeout(function () {
     svgGroup.selectAll(".ui-node-svg")
       .transition()
-      .duration(100 * getRandomArbitrary(.5, 3))
-      .attr("fill", "rgba(255, 255, 255, 0)")
-      .remove();
-  }, 800)
+      .duration(200)
+      .attr("r", 0);
+  }, duration)
 }
 
 function appendLineAstronomy(source, target, svgGroup, duration) {
