@@ -5,13 +5,16 @@ document.addEventListener("DOMContentLoaded", function () {
       text: "Use astronomy to make your move in music industry"
     },
     {
-      text: "from online insuring to a sure thing"
+      text: "From online insuring to a sure thing"
     },
     {
-      text: "from big pharma to modern farming"
+      text: "From big pharma to modern farming"
     },
     {
-      text: "to be on top in banking you need a super computer and a wizkid"
+      text: "To be on top in banking you need a super computer and a wizkid"
+    },
+    {
+      text: "We create meaningful data-driven user experience using advanced technology data science and art"
     }
   ];
 
@@ -28,6 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
 function runManifesto (manifesto) {
   astronomy_v2({
     region: ".js-animation-container",
-    text: manifesto
+    text: [
+      ["We", "create", "meaningful"],
+      ["data-driven", "user", "experience"],
+      ["using", "advanced", "technology"],
+      ["data", "science", "and", "art"],
+    ],
+    styles: {
+      "font-size": "42px"
+    },
+    dotRadius: 4
   });
 }

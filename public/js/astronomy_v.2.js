@@ -1,12 +1,15 @@
 var global = {
-  animationIntervalId: null
+  animationIntervalId: null,
+  dotRadius: 7,
+  nodes: []
 };
 
 function astronomy_v2(options) {
-  options.dotRadius = 7;
+  global.dotRadius = options.dotRadius;
   $(options.region).empty();
   if (global.animationIntervalId) clearInterval(global.animationIntervalId);
   $(options.region).addClass("ui-animation-container");
+  $(options.region).css(options.styles);
 
   animateWordsFadeIn(options).then(function (nodes) {
     appendNodesAndDrawPath({
@@ -20,7 +23,7 @@ function astronomy_v2(options) {
 
 function animateWordsFadeIn(options) {
   return new Promise(function (resolve, reject) {
-    appendPureText(options).then(function (nodes) {
+    appendArrayOfStrings(options).then(function (nodes) {
       var $words = $(".js-word");
       $words.animate({ opacity: 1 }, 300);
       resolve(nodes);
@@ -30,7 +33,7 @@ function animateWordsFadeIn(options) {
 
 function appendArrayOfStrings(options) {
   return new Promise(function (resolve, reject) {
-    var nodes = [];
+    var nodes = global.nodes;
     var index = 0;
     _.each(options.text, function (phrase, j) {
       $(options.region).append(getStringTemplate(j));
@@ -41,6 +44,7 @@ function appendArrayOfStrings(options) {
         $currentString.append(getNodeTemplate("js-node-" + index));
         let stringHeight = $currentString.height() * j;
         let $currentNode = $(".js-node-" + index)[0];
+
         nodes.push({
           x: $currentNode.offsetLeft,
           y: stringHeight + $currentNode.offsetTop,
@@ -60,10 +64,14 @@ function appendPureText(options) {
       index++;
       $(options.region).append(getWordTemplate(word));
       $(options.region).append(getNodeTemplate("js-node-" + index));
-      let $currentNode = $(".js-node-" + index)[0];
+      let $currentNode = $(".js-node-" + index);
+      $currentNode.css({
+        width: global.dotRadius*2,
+        height: global.dotRadius*2
+      });
       nodes.push({
-        x: $currentNode.offsetLeft + options.dotRadius,
-        y: $currentNode.offsetTop + options.dotRadius,
+        x: $currentNode[0].offsetLeft + global.dotRadius,
+        y: $currentNode[0].offsetTop + global.dotRadius,
         id: index
       })
     });
@@ -98,7 +106,8 @@ function appendNodesAndDrawPath(options) {
   var newOptions = {
     region: options.region,
     nodes: nodes,
-    svgGroup: svgGroup
+    svgGroup: svgGroup,
+    dotRadius: global.dotRadius
   };
 
   appendRandomNodes(newOptions).then(function () {
@@ -111,7 +120,8 @@ function appendNodesAndDrawPath(options) {
     var newOptions = {
       region: options.region,
       nodes: nodes,
-      svgGroup: svgGroup
+      svgGroup: svgGroup,
+      dotRadius: global.dotRadius
     };
 
     appendRandomNodes(newOptions).then(function () {
@@ -131,7 +141,7 @@ function appendRandomNodes(options) {
           .attr("class", "ui-node-svg")
           .attr("cx", options.nodes[i].x)
           .attr("cy", options.nodes[i].y)
-          .attr("r", 7);
+          .attr("r", options.dotRadius || 7);
         if (i === options.nodes.length - 1) {
           resolve(options);
         }
@@ -191,6 +201,7 @@ function appendLineAstronomy(source, target, svgGroup, duration) {
   svgGroup.append("path")
     .attr("class", "ui-path-svg " + "s" + source.id + " t" + target.id)
     .attr("d", dStart)
+    .attr("stroke-width", global.dotRadius)
     .transition()
     .duration(duration)
     .attr("d", d);
