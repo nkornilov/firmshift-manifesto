@@ -32,35 +32,12 @@ body.isAnimating {
     background: #EA5C65;
 }
 
-.ui-color-peach {
-    color: #EA5C65;
-}
-
-.ui-color-brown {
-    color: #674133;
-}
-
-.ui-color-red-svg {
-    font-size: 14px;
-    color: #E05C5B;
-}
-
-@keyframes charAnimation {
-    0% {
-        color: #EA5C65;
-        text-shadow: 1px 1px 1px rgba(0,0,0,0);
-    }
-    50% {
-        color: #674133;
-        text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
-    }
-}
-
-.ui-static-wrap, .ui-dynamic-wrap, .ui-hc-wrap {
+.ui-animation-container  {
     position: relative;
-    margin: 0 auto;
-    width: 40%;
-    font-size: 72px;
+    margin: 5% auto;
+    width: 48%;
+    font-size: 82px;
+    font-family: "Circular Book";
 }
 
 .ui-svg-container {
@@ -69,11 +46,6 @@ body.isAnimating {
     height: 100%;
     top: 0;
     left: 0;
-}
-
-.ui-string {
-    position: relative;
-    /*z-index: 1;*/
 }
 
 .ui-manifesto-word {

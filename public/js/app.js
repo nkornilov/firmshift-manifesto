@@ -15,15 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   ];
 
-  astronomy_v2({
-    region: ".js-hc-container",
-    text: [
-      ["Use", "astronomy"],
-      ["to", "make", "your"],
-      ["move", "in", "the", "music"],
-      ["industry"]
-    ]
+  var manifestoIndex = 0;
+  runManifesto(manifestos[manifestoIndex++].text.split(" "));
+
+  $("body").on("click", function () {
+    if (manifestoIndex == manifestos.length) manifestoIndex = 0;
+    runManifesto(manifestos[manifestoIndex++].text.split(" "))
   });
 
-
 });
+
+function runManifesto (manifesto) {
+  astronomy_v2({
+    region: ".js-animation-container",
+    text: manifesto
+  });
+}

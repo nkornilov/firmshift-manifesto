@@ -1,49 +1,75 @@
+var global = {
+  animationIntervalId: null
+};
+
 function astronomy_v2(options) {
-  var nodes = [
-    {y: 122, x: 149, id: 0},
-    {y: 122, x: 560, id: 1},
-    {y: 211, x: 88, id: 2},
-    {y: 211, x: 313, id: 3},
-    {y: 211, x: 498, id: 4},
-    {y: 300, x: 214, id: 5},
-    {y: 300, x: 305, id: 6},
-    {y: 300, x: 448, id: 7},
-    {y: 300, x: 688, id: 8},
-    {y: 390, x: 310, id: 9}
-  ];
+  
+  console.log(options, global.animationIntervalId )
+  options.dotRadius = 7;
+  $(options.region).empty();
+  if (global.animationIntervalId) clearInterval(global.animationIntervalId);
+  $(options.region).addClass("ui-animation-container");
 
-
-  animateWordsFadeIn(options).then(function () {
+  animateWordsFadeIn(options).then(function (nodes) {
     appendNodesAndDrawPath({
       nodes: nodes,
       region: options.region
     })
   }, null);
-
 }
+
 
 
 function animateWordsFadeIn(options) {
   return new Promise(function (resolve, reject) {
-    appendArrayOfWords(options).then(function () {
+    appendPureText(options).then(function (nodes) {
       var $words = $(".js-word");
-      $words.animate({opacity: 1}, 300);
-      resolve()
-    })
-  })
+      $words.animate({ opacity: 1 }, 300);
+      resolve(nodes);
+    });
+  });
 }
 
-function appendArrayOfWords(options) {
+function appendArrayOfStrings(options) {
   return new Promise(function (resolve, reject) {
+    var nodes = [];
+    var index = 0;
     _.each(options.text, function (phrase, j) {
       $(options.region).append(getStringTemplate(j));
       var $currentString = $(".js-string-" + j);
       _.each(phrase, function (word, i) {
+        index++;
         $currentString.append(getWordTemplate(word));
-        $currentString.append(getNodeTemplate("js-node-" + i))
+        $currentString.append(getNodeTemplate("js-node-" + index));
+        let stringHeight = $currentString.height() * j;
+        let $currentNode = $(".js-node-" + index)[0];
+        nodes.push({
+          x: $currentNode.offsetLeft,
+          y: stringHeight + $currentNode.offsetTop,
+          id: index
+        })
       });
     });
-    resolve();
+    resolve(nodes);
+  })
+}
+
+function appendPureText(options) {
+  return new Promise(function (resolve, reject) {
+    var nodes = [];
+    var index = 0;
+    _.each(options.text, function (word, i) {
+      index++;
+      $(options.region).append(getWordTemplate(word));
+      $(options.region).append(getNodeTemplate("js-node-" + index));
+      let $currentNode = $(".js-node-" + index)[0];
+      nodes.push({
+        x: $currentNode.offsetLeft + options.dotRadius,
+        y: $currentNode.offsetTop + options.dotRadius,
+        id: index
+      })
+    });
+    resolve(nodes);
   })
 }
 
@@ -81,7 +107,7 @@ function appendNodesAndDrawPath(options) {
     appendLines(newOptions);
   });
 
-  setInterval(function () {
+  global.animationIntervalId = setInterval(function () {
     svgGroup.selectAll("*").remove();
     var nodes = getRandomSubArray(options.nodes);
     var newOptions = {
@@ -96,7 +122,6 @@ function appendNodesAndDrawPath(options) {
   }, 3500);
 
 }
-
 
 
 function appendRandomNodes(options) {
@@ -121,12 +146,16 @@ function appendRandomNodes(options) {
 function appendLines(options) {
   return new Promise(function (resolve, reject) {
     var appendedPaths = [];
+    var iterations = 0;
     for (let i = 0; i < options.nodes.length && i >= 0; i++) {
       let source = options.nodes[i];
       let target = options.nodes[getRandomArbitaryInt(0, options.nodes.length - 1)];
       let notSameNode = source.id !== target.id;
       let notSameRow = source.y !== target.y;
       let yetNoPath = _.isUndefined(_.findWhere(appendedPaths, {source: target, target: source}));
+      iterations++;
+
+      if (iterations > options.nodes.length*50) break;
 
       if (notSameNode && notSameRow) {
         appendedPaths.push({source: source, target: target});
@@ -186,31 +215,3 @@ function updateLine(selector, source, target, duration) {
     .duration(duration)
     .attr("d", d);
 }
-
-
-// setInterval(function () {
-//   svgGroup.selectAll("*").remove();
-//   var nodes = getRandomSubArray(options.nodes);
-//   var newOptions = {
-//     region: options.region,
-//     nodes: nodes,
-//     svgGroup: svgGroup
-//   };
-//   appendRandomNodes(newOptions).then(function () {
-//     appendLines(newOptions).then(function (options) {
-//       var newNodes = getRandomSubArray(options.nodes);
-//       appendRandomNodes({
-//         region: options.region,
-//         nodes: _.difference(newOptions.nodes, newNodes),
-//         svgGroup: options.svgGroup
-//       }).then(function () {
-//         appendLines({
-//           region: options.region,
-//           nodes: newNodes,
-//           svgGroup: options.svgGroup
-//         });
-//       })
-//     });
-//     // appendLines(newOptions).then(hideLines, null);
-//   });
-// }, 3800)
