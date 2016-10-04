@@ -41,6 +41,7 @@ body.isAnimating {
     font-size: 82px;
     font-weight: bold;
     padding-bottom: 180px;
+    opacity: 0;
 }
 
 .ui-svg-container {
@@ -79,10 +80,6 @@ body.isAnimating {
 .ui-path-svg {
     fill: none;
     stroke: rgba(255, 255, 255, .4);
-}
-
-.ui-word {
-    opacity: 0;
 }
 
 .ui-upper {

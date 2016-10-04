@@ -74,11 +74,10 @@ function astronomy_v2(options) {
 function animateWordsFadeIn(options) {
   return new Promise(function (resolve, reject) {
     appendArrayOfStrings(options).then(function (nodes) {
+      $(options.region).animate({ opacity: 1 }, 2000);
       setTimeout(function () {
-        var $words = $(".js-word");
-        $words.animate({ opacity: 1 }, 1000);
         resolve(nodes);
-      }, 500)
+      }, 1800)
 
     });
   });
@@ -151,7 +150,6 @@ function getStringTemplate(i) {
 }
 
 var durationForCreate = 650;
-
 
 function appendNodesAndDrawPath(options) {
   var svg = d3.select(options.region).append("svg:svg")
