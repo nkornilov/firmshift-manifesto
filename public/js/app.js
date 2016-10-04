@@ -10,7 +10,7 @@ function runManifesto () {
     region: ".js-animation-container",
     text: [
       ["We", "create", "meaningful"],
-      ["data-driven", "user", "experience"],
+      ["data-driven", "user", "experiences"],
       ["using", "advanced", "technology"],
       ["data", "science", "and", "art"],
     ],

@@ -70,10 +70,18 @@ function astronomy_v2(options) {
   }, null);
 }
 
-
 function animateWordsFadeIn(options) {
   return new Promise(function (resolve, reject) {
-    appendArrayOfStrings(options).then(function (nodes) {
+    appendArrayOfStrings(options).then(function () {
+      var nodes = _.clone(global.nodes);
+      var $nodes = $(".js-node");
+      $nodes.each(function (i, ui) {
+        nodes.push({
+          id: i,
+          x: ui.offsetLeft + global.dotRadius,
+          y: ui.offsetTop + global.dotRadius
+        })
+      });
       $(options.region).animate({ opacity: 1 }, 2000);
       setTimeout(function () {
         resolve(nodes);
@@ -84,7 +92,6 @@ function animateWordsFadeIn(options) {
 
 function appendArrayOfStrings(options) {
   return new Promise(function (resolve, reject) {
-    var nodes = _.clone(global.nodes);
     var index = 0;
     _.each(options.text, function (phrase, j) {
       $(options.textRegion).append(getStringTemplate(j));
@@ -99,22 +106,14 @@ function appendArrayOfStrings(options) {
           width: global.dotRadius * 2,
           height: global.dotRadius * 2
         });
-
-
-        nodes.push({
-          x: $currentNode[0].offsetLeft + global.dotRadius,
-          y: $currentNode[0].offsetTop + global.dotRadius,
-          id: index
-        })
       });
     });
-    resolve(nodes);
+    resolve();
   })
 }
 
 function appendPureText(options) {
   return new Promise(function (resolve, reject) {
-    var nodes = _.clone(global.nodes);
     var index = 0;
     _.each(options.text, function (word, i) {
       index++;
@@ -126,13 +125,8 @@ function appendPureText(options) {
         width: global.dotRadius * 2,
         height: global.dotRadius * 2
       });
-      nodes.push({
-        x: $currentNode[0].offsetLeft + global.dotRadius,
-        y: $currentNode[0].offsetTop + global.dotRadius,
-        id: index
-      })
     });
-    resolve(nodes);
+    resolve();
   })
 }
 

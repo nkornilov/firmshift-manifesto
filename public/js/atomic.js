@@ -7,13 +7,14 @@ function getRandomArbitaryInt(min, max) {
 }
 
 function getRandomSubArray (array) {
+  if (array.length < 4) return false;
   var randomSubArray = [];
   _.each(array, function (elem, i) {
     if (Math.random() > 0.5) {
       randomSubArray.push(elem);
     }
   })
-  return randomSubArray.length > 2  ? randomSubArray : getRandomSubArray(array);
+  return randomSubArray.length > 2 && randomSubArray.length < Math.ceil(array.length*0.6)  ? randomSubArray : getRandomSubArray(array);
 }
 
 function getRandomArbitrary(min, max) {

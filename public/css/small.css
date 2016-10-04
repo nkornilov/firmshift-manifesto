@@ -1,6 +1,6 @@
 .ui-animation-container {
     margin-top: 5%;
-    width: 360px;
+    width: 370px;
     font-size: 26px !important;
 }
 
@@ -31,4 +31,8 @@
 
 .ui-animation-header {
     padding: 0 0 50%;
+}
+
+.ui-node {
+    top: 1px;
 }
