@@ -14,7 +14,7 @@ function getRandomSubArray (array) {
       randomSubArray.push(elem);
     }
   })
-  return randomSubArray.length > 2 && randomSubArray.length < Math.ceil(array.length*0.6)  ? randomSubArray : getRandomSubArray(array);
+  return randomSubArray.length > 3 && randomSubArray.length < Math.ceil(array.length*0.5)  ? randomSubArray : getRandomSubArray(array);
 }
 
 function getRandomArbitrary(min, max) {

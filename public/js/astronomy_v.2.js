@@ -82,10 +82,9 @@ function animateWordsFadeIn(options) {
           y: ui.offsetTop + global.dotRadius
         })
       });
-      $(options.region).animate({ opacity: 1 }, 2000);
-      setTimeout(function () {
+      $(options.region).animate({ opacity: 1 }, 2000, function () {
         resolve(nodes);
-      }, 1800)
+      });
     });
   });
 }
