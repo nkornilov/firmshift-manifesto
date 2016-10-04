@@ -78,7 +78,6 @@ function animateWordsFadeIn(options) {
       setTimeout(function () {
         resolve(nodes);
       }, 1800)
-
     });
   });
 }
@@ -155,37 +154,31 @@ function appendNodesAndDrawPath(options) {
   var svg = d3.select(options.region).append("svg:svg")
     .attr("class", "ui-svg-container");
 
-  var svgGroup = svg.append("svg:g")
+  options.svgGroup = svg.append("svg:g")
     .attr("class", "ui-svg-group");
 
-  svgGroup.selectAll("*").remove();
+
+  renderAnimation(options);
+
+  global.animationIntervalId = setInterval(function () {
+    renderAnimation(options);
+  }, 8500);
+
+}
+
+function renderAnimation(options) {
+  options.svgGroup.selectAll("*").remove();
   var nodes = getRandomSubArray(options.nodes);
   var newOptions = {
     region: options.region,
     nodes: nodes,
-    svgGroup: svgGroup,
+    svgGroup: options.svgGroup,
     dotRadius: global.dotRadius
   };
 
   appendRandomNodes(newOptions).then(function () {
     appendLines(newOptions);
   });
-
-  global.animationIntervalId = setInterval(function () {
-    svgGroup.selectAll("*").remove();
-    var nodes = getRandomSubArray(options.nodes);
-    var newOptions = {
-      region: options.region,
-      nodes: nodes,
-      svgGroup: svgGroup,
-      dotRadius: global.dotRadius
-    };
-
-    appendRandomNodes(newOptions).then(function () {
-      appendLines(newOptions);
-    });
-  }, 8500);
-
 }
 
 
