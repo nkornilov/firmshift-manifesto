@@ -74,9 +74,12 @@ function astronomy_v2(options) {
 function animateWordsFadeIn(options) {
   return new Promise(function (resolve, reject) {
     appendArrayOfStrings(options).then(function (nodes) {
-      var $words = $(".js-word");
-      $words.animate({opacity: 1}, 300);
-      resolve(nodes);
+      setTimeout(function () {
+        var $words = $(".js-word");
+        $words.animate({ opacity: 1 }, 1000);
+        resolve(nodes);
+      }, 500)
+
     });
   });
 }
@@ -147,7 +150,7 @@ function getStringTemplate(i) {
   return '<div class="ui-string js-string-' + i + '"></div>';
 }
 
-var durationForCreate = 450;
+var durationForCreate = 650;
 
 
 function appendNodesAndDrawPath(options) {
@@ -183,7 +186,7 @@ function appendNodesAndDrawPath(options) {
     appendRandomNodes(newOptions).then(function () {
       appendLines(newOptions);
     });
-  }, 6500);
+  }, 8500);
 
 }
 
@@ -237,7 +240,7 @@ function appendLines(options) {
     }
     setTimeout(function () {
       hideLines(appendedPaths, options.svgGroup);
-    }, 4500)
+    }, 5500)
   })
 }
 

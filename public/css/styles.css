@@ -40,6 +40,7 @@ body.isAnimating {
     font-family: "Circular Book", Helvetica;
     font-size: 82px;
     font-weight: bold;
+    padding-bottom: 180px;
 }
 
 .ui-svg-container {
@@ -81,7 +82,7 @@ body.isAnimating {
 }
 
 .ui-word {
-    opacity: .1;
+    opacity: 0;
 }
 
 .ui-upper {
@@ -91,10 +92,6 @@ body.isAnimating {
 
 .ui-animation-header {
     padding: 0 0 35%;
-}
-
-.ui-logo-add-dots {
-    position: relative;
 }
 
 .ui-logo-add-dots:before {
