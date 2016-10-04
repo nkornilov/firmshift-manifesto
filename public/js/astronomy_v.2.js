@@ -4,28 +4,78 @@ var global = {
   nodes: []
 };
 
+var specificNodes = {
+  normal: [
+    {
+      id: 100000,
+      x: 24,
+      y: 17
+    },
+    {
+      id: 100001,
+      x: 154,
+      y: 62
+    }
+  ],
+  small: [{
+      id: 100000,
+      x: 12,
+      y: 8
+    },
+    {
+      id: 100001,
+      x: 77,
+      y: 32
+    }]
+};
+
+
 function astronomy_v2(options) {
-  global.dotRadius = options.dotRadius;
-  $(options.region).empty();
+  if ($(window).width() < 700) {
+    global.dotRadius = 3;
+    global.nodes = specificNodes.small;
+  } else {
+    global.dotRadius = options.dotRadius;
+    global.nodes = specificNodes.normal;
+  }
+
   if (global.animationIntervalId) clearInterval(global.animationIntervalId);
+
+  var $textRegion = $(".js-animation-phrase");
+  var $svgRegion = $(".js-animation-wrap");
+
+  if ($textRegion.length == 0) {
+    $(options.region).append("<div class='js-animation-phrase'></div>");
+  } else {
+    $textRegion.empty();
+  }
+
+  if ($svgRegion.length == 0) {
+    $(options.region).append("<div class='js-animation-wrap'></div>");
+  } else {
+    $svgRegion.empty();
+  }
+
   $(options.region).addClass("ui-animation-container");
   $(options.region).css(options.styles);
+
+  options.textRegion = ".js-animation-phrase";
+  options.svgRegion = ".js-animation-wrap";
 
   animateWordsFadeIn(options).then(function (nodes) {
     appendNodesAndDrawPath({
       nodes: nodes,
-      region: options.region
+      region: options.svgRegion
     })
   }, null);
 }
-
 
 
 function animateWordsFadeIn(options) {
   return new Promise(function (resolve, reject) {
     appendArrayOfStrings(options).then(function (nodes) {
       var $words = $(".js-word");
-      $words.animate({ opacity: 1 }, 300);
+      $words.animate({opacity: 1}, 300);
       resolve(nodes);
     });
   });
@@ -36,7 +86,7 @@ function appendArrayOfStrings(options) {
     var nodes = _.clone(global.nodes);
     var index = 0;
     _.each(options.text, function (phrase, j) {
-      $(options.region).append(getStringTemplate(j));
+      $(options.textRegion).append(getStringTemplate(j));
       var $currentString = $(".js-string-" + j);
       _.each(phrase, function (word, i) {
         index++;
@@ -45,8 +95,8 @@ function appendArrayOfStrings(options) {
         $currentString.append(getNodeTemplate("js-node-" + index));
         let $currentNode = $(".js-node-" + index);
         $currentNode.css({
-          width: global.dotRadius*2,
-          height: global.dotRadius*2
+          width: global.dotRadius * 2,
+          height: global.dotRadius * 2
         });
 
 
@@ -68,12 +118,12 @@ function appendPureText(options) {
     _.each(options.text, function (word, i) {
       index++;
       var className = Math.random() > 0.5 ? "ui-upper" : "";
-      $(options.region).append(getWordTemplate(className, word));
-      $(options.region).append(getNodeTemplate("js-node-" + index));
+      $(options.textRegion).append(getWordTemplate(className, word));
+      $(options.textRegion).append(getNodeTemplate("js-node-" + index));
       let $currentNode = $(".js-node-" + index);
       $currentNode.css({
-        width: global.dotRadius*2,
-        height: global.dotRadius*2
+        width: global.dotRadius * 2,
+        height: global.dotRadius * 2
       });
       nodes.push({
         x: $currentNode[0].offsetLeft + global.dotRadius,
@@ -172,7 +222,7 @@ function appendLines(options) {
       let yetNoPath = _.isUndefined(_.findWhere(appendedPaths, {source: target, target: source}));
       iterations++;
 
-      if (iterations > options.nodes.length*50) break;
+      if (iterations > options.nodes.length * 50) break;
 
       if (notSameNode && notSameRow) {
         appendedPaths.push({source: source, target: target});
@@ -187,7 +237,7 @@ function appendLines(options) {
     }
     setTimeout(function () {
       hideLines(appendedPaths, options.svgGroup);
-    }, 3500)
+    }, 4500)
   })
 }
 
@@ -198,7 +248,7 @@ function hideLines(paths, svgGroup) {
   hideNodes(svgGroup, 900);
 }
 
-function hideNodes (svgGroup, duration) {
+function hideNodes(svgGroup, duration) {
   setTimeout(function () {
     svgGroup.selectAll(".ui-node-svg")
       .transition()

@@ -1,0 +1,146 @@
+%!Adobe-FontList 1.16
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Maax-Bold
+FamilyName:Maax
+StyleName:Bold
+MenuName:Maax
+StyleBits:2
+WeightClass:700
+WidthClass:5
+AngleClass:0
+FullName:Maax Bold
+WritingScript:Roman
+OutlineFileName:\205-MaaxBold.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:60848
+FileModTime:1333377906
+NameArray:0,Mac,4,Maax Bold
+NameArray:0,Win,1,Maax
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Maax
+FamilyName:Maax
+StyleName:Regular
+MenuName:Maax
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Maax
+WritingScript:Roman
+OutlineFileName:\205-MaaxRegular.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:60284
+FileModTime:1333377952
+NameArray:0,Mac,4,Maax
+NameArray:0,Win,1,Maax
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:CircularStd-Black
+FamilyName:Circular Std
+StyleName:Black
+MenuName:Circular Std Black
+StyleBits:0
+WeightClass:900
+WidthClass:5
+AngleClass:0
+FullName:Circular Std Black
+WritingScript:Roman
+OutlineFileName:\CircularStd-Black.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:74500
+FileModTime:1372067666
+NameArray:0,Mac,4,Circular Std Black
+NameArray:0,Win,1,Circular Std Black
+NameArray:0,Win,16,Circular Std
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:CircularStd-Book
+FamilyName:Circular Std
+StyleName:Book
+MenuName:Circular Std Book
+StyleBits:0
+WeightClass:450
+WidthClass:5
+AngleClass:0
+FullName:Circular Std Book
+WritingScript:Roman
+OutlineFileName:\CircularStd-Book.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:68940
+FileModTime:1372067664
+NameArray:0,Mac,4,Circular Std Book
+NameArray:0,Win,1,Circular Std Book
+NameArray:0,Win,16,Circular Std
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Stanley-Poster
+FamilyName:Stanley
+StyleName:Poster
+MenuName:Stanley
+StyleBits:2
+WeightClass:800
+WidthClass:5
+AngleClass:0
+FullName:Stanley Poster
+WritingScript:Roman
+OutlineFileName:\Stanley-Poster.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:20108
+FileModTime:1375892682
+NameArray:0,Mac,4,Stanley Poster
+NameArray:0,Win,1,Stanley
+NameArray:0,Win,16,Stanley
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Stanley-Regular
+FamilyName:Stanley
+StyleName:Regular
+MenuName:Stanley
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Stanley Regular
+WritingScript:Roman
+OutlineFileName:\Stanley-Regular.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:22012
+FileModTime:1375892482
+NameArray:0,Mac,18,Stanley Regular
+NameArray:0,Mac,4,Stanley Regular
+NameArray:0,Win,1,Stanley
+NameArray:0,Win,16,Stanley
+%EndFont
+

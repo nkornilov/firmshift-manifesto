@@ -1,34 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  var manifestos = [
-    {
-      text: "Use astronomy to make your move in music industry"
-    },
-    {
-      text: "From online insuring to a sure thing"
-    },
-    {
-      text: "From big pharma to modern farming"
-    },
-    {
-      text: "To be on top in banking you need a super computer and a wizkid"
-    },
-    {
-      text: "We create meaningful data-driven user experience using advanced technology data science and art"
-    }
-  ];
+  runManifesto();
 
-  var manifestoIndex = 0;
-  runManifesto(manifestos[manifestoIndex++].text.split(" "));
-
-  $("body").on("click", function () {
-    if (manifestoIndex == manifestos.length) manifestoIndex = 0;
-    runManifesto(manifestos[manifestoIndex++].text.split(" "))
-  });
-
+  $(window).resize(_.throttle(runManifesto, 250));
 });
 
-function runManifesto (manifesto) {
+function runManifesto () {
   astronomy_v2({
     region: ".js-animation-container",
     text: [
@@ -40,6 +17,7 @@ function runManifesto (manifesto) {
     styles: {
       "font-size": "52px"
     },
-    dotRadius: 6
+    dotRadius: 5
   });
 }
+

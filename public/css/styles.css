@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Circular Book";
-    src: url("../fonts/circular-book.woff");
+    src: url("../fonts/CircularStd-Book.otf");
 }
 
 html, body {
@@ -28,14 +28,15 @@ body.isAnimating {
     background: #63CC99;
 }
 
-.ui-bg-peach {
-    background: #EA5C65;
+.ui-bg-brown {
+    background-color: #6E4A21;
 }
 
 .ui-animation-container  {
+    color: #EA5C65;
     position: relative;
-    margin: 5% auto;
-    width: 48%;
+    margin: 2% auto 0;
+    width: 700px;
     font-family: "Circular Book", Helvetica;
     font-size: 82px;
     font-weight: bold;
@@ -51,6 +52,8 @@ body.isAnimating {
 
 .ui-manifesto-word {
     display: inline-block;
+    position: relative;
+    z-index: 1;
 }
 
 .ui-node {
@@ -58,15 +61,18 @@ body.isAnimating {
     top: 3px;
     display: inline-block;
     background: none;
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    margin: 0 5px;
+    margin: 0 3px;
+    z-index: 2;
 }
 
 .ui-node-svg {
     fill: #FFF;
     stroke: none;
+    position: relative;
+    z-index: 2;
 }
 
 .ui-path-svg {
@@ -75,11 +81,42 @@ body.isAnimating {
 }
 
 .ui-word {
-    color: #674133;
     opacity: .1;
+}
+
+.ui-upper {
+    position: relative;
+    z-index: 1;
+}
+
+.ui-animation-header {
+    padding: 0 0 35%;
+}
+
+.ui-logo-add-dots {
     position: relative;
 }
 
-.ui-word.ui-upper {
-    z-index: 1;
+.ui-logo-add-dots:before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #FFF;
+    top: 12px;
+    left: 19px;
+}
+
+.ui-logo-add-dots:after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6E4A21;
+    top: 12px;
+    left: 149px;
 }
