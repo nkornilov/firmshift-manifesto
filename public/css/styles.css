@@ -29,11 +29,11 @@ body.isAnimating {
 }
 
 .ui-bg-brown {
-    background-color: #6E4A21;
+    background-color: #614700;
 }
 
 .ui-animation-container  {
-    color: #EA5C65;
+    color: #ff535a;
     position: relative;
     margin: 0 auto;
     width: 700px;
@@ -79,7 +79,7 @@ body.isAnimating {
 
 .ui-path-svg {
     fill: none;
-    stroke: rgba(255, 255, 255, .4);
+    stroke: rgba(255, 255, 255, .5);
 }
 
 .ui-upper {
@@ -110,7 +110,7 @@ body.isAnimating {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #6E4A21;
+    background: #614700;
     top: 11px;
     left: 137px;
 }
@@ -129,6 +129,16 @@ body.isAnimating {
     -ms-transition:     .2s;
     -o-transition:      .2s;
     transition:         .2s;
+}
+
+.ui-contacts-wrap.ui-visible {
+    animation: fadeInForContacts 1s;
+    opacity: .65;
+}
+
+@keyframes fadeInForContacts {
+    from { opacity: 0 }
+    to { opacity: .65 }
 }
 
 .ui-contacts-wrap a {

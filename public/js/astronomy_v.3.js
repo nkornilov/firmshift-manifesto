@@ -127,7 +127,7 @@ function astronomy_v3(options) {
   prepareRegion(options);
   appendArrayOfStrings(options).then(() => {
     $(options.region).animate({ opacity: 1 }, 1000, () => {
-      $(".js-contacts").animate({ opacity: .65}, 1000);
+      $(".js-contacts").addClass("ui-visible");
       d3.select(options.svgRegion).selectAll("*").remove();
       
       options.svg = d3.select(options.svgRegion).append("svg:svg")
@@ -160,12 +160,12 @@ function renderAnimation (options) {
         paths: global.paths,
         svgGroup: options.svgGroup
       }).then(() => setTimeout(() => {
-        // destroyPaths().then(() => {
-          // destroyNodes().then(() => {
-          //   global.currentNodesSet = getRandomSubArray(global.gatheredNodes);
-          //   renderAnimation(optionsSet);
-          // })
-        // });
+        destroyPaths().then(() => {
+          destroyNodes().then(() => {
+            global.currentNodesSet = getRandomSubArray(global.gatheredNodes);
+            renderAnimation(optionsSet);
+          })
+        });
       }, 2000))
     }, 1000)
   }, null);
@@ -253,7 +253,7 @@ function renderPath (path, svgGroup, duration) {
     svgGroup.append("path")
       .attr("class", "ui-path-svg " + "s" + path.source.id + " t" + path.target.id)
       .attr("d", dStart)
-      .attr("stroke-width", global.dotRadius)
+      .attr("stroke-width", 1.4 * global.dotRadius)
       .transition()
       .duration(duration)
       .attr("d", d);
