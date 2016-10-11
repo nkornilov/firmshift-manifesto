@@ -38,8 +38,7 @@ body.isAnimating {
     margin: 0 auto;
     width: 700px;
     font-family: "Circular Book", Helvetica;
-    font-size: 82px;
-    font-weight: bold;
+    font-size: 62px;
     padding-bottom: 100px;
     opacity: 0;
 }
