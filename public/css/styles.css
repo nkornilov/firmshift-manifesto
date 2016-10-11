@@ -132,12 +132,18 @@ body.isAnimating {
 
 .ui-contacts-wrap.ui-visible {
     animation: fadeInForContacts 1s;
-    opacity: .65;
+    opacity: 1;
 }
 
 @keyframes fadeInForContacts {
     from { opacity: 0 }
-    to { opacity: .65 }
+    to { opacity: 1 }
+}
+
+@keyframes fadeOutInfo {
+    0% { opacity: 1 }
+    80% { opacity: 1 }
+    100% { opacity: 0 }
 }
 
 .ui-contacts-wrap a {
@@ -162,6 +168,22 @@ body.isAnimating {
     padding: 11px;
     color: #FFF;
     cursor: pointer;
+    opacity: 0;
+    animation: fadeOutInfo 5s;
+    -webkit-transition: .2s;
+    -moz-transition:    .2s;
+    -ms-transition:     .2s;
+    -o-transition:      .2s;
+    transition:         .2s;
+}
+
+.ui-contacts-wrap:hover .ui-contacts-info {
+    opacity: 1;
+    -webkit-transition: .2s;
+    -moz-transition:    .2s;
+    -ms-transition:     .2s;
+    -o-transition:      .2s;
+    transition:         .2s;
 }
 
 .ui-contact-icon, .ui-contacts-info {
