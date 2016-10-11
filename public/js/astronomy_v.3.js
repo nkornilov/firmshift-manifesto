@@ -12,13 +12,13 @@ var specificNodes = {
   normal: [
     {
       id: 100000,
-      x: 23,
-      y: 17
+      x: 24,
+      y: 16
     },
     {
       id: 100001,
-      x: 142,
-      y: 57
+      x: 152,
+      y: 56
     }
   ],
   small: [{
@@ -28,14 +28,14 @@ var specificNodes = {
   },
     {
       id: 100001,
-      x: 77,
-      y: 32
+      x: 82,
+      y: 30
     }]
 };
 
 function prepareRegion(options) {
   if ($(window).width() < 700 || $(window).height() < 430) {
-    global.dotRadius = 3;
+    global.dotRadius = 2;
     global.nodes = specificNodes.small;
   } else {
     global.dotRadius = options.dotRadius;

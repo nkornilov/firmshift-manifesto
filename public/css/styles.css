@@ -3,6 +3,11 @@
     src: url("../fonts/CircularStd-Book.otf");
 }
 
+@font-face {
+    font-family: "Circular Black";
+    src: url("../fonts/CircularStd-Black.otf");
+}
+
 html, body {
     height: 100%;
     padding: 0;
@@ -11,7 +16,7 @@ html, body {
 
 body {
     background: #EEE;
-    font-family: "Circular Book";
+    font-family: "Circular Black";
     cursor: default;
 }
 
@@ -37,7 +42,7 @@ body.isAnimating {
     position: relative;
     margin: 0 auto;
     width: 700px;
-    font-family: "Circular Book", Helvetica;
+    font-family: "Circular Black", Helvetica;
     font-size: 62px;
     padding-bottom: 100px;
     opacity: 0;
@@ -94,11 +99,10 @@ body.isAnimating {
     position: absolute;
     display: block;
     content: "";
-    width: 10px;
+    width: 11px;
     height: 10px;
-    border-radius: 50%;
-    background: #FFF;
-    top: 12px;
+    background: #614700;
+    top: 11px;
     left: 18px;
 }
 
@@ -106,12 +110,11 @@ body.isAnimating {
     position: absolute;
     display: block;
     content: "";
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+    width: 12px;
+    height: 11px;
     background: #614700;
     top: 11px;
-    left: 137px;
+    left: 145px;
 }
 
 .ui-string {
@@ -168,6 +171,7 @@ body.isAnimating {
     padding: 11px;
     color: #FFF;
     cursor: pointer;
+    font-family: "Circular Book", Helvetica;
     opacity: 0;
     animation: fadeOutInfo 5s;
     -webkit-transition: .2s;

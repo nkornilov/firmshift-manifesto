@@ -1,21 +1,21 @@
 .ui-animation-container {
     margin-top: 5%;
-    width: 370px;
-    font-size: 26px !important;
+    width: 310px;
+    font-size: 22px !important;
     padding-bottom: 60px;
 }
 
 .ui-contacts-wrap {
-    width: 370px;
+    width: 310px;
 }
 
 .ui-contact-icon, .ui-contacts-info {
-    height: 24px;
+    height: 22px;
 }
 
 .ui-contacts-info {
-    padding: 4px;
-    font-size: 14px;
+    padding: 2px;
+    font-size: 12px;
 }
 
 .ui-logo-add-dots:before {
@@ -25,24 +25,24 @@
     width: 6px;
     height: 6px;
     background: #614700;
-    top: 6px;
-    left: 10px;
+    top: 4px;
+    left: 9px;
 }
 
 .ui-logo-add-dots:after {
     position: absolute;
     display: block;
     content: "";
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     background: #614700;
-    top: 6px;
-    left: 79px;
+    top: 3px;
+    left: 66px;
 }
 
 
 .ui-animation-header {
-    padding: 0 0 60%;
+    padding: 0 0 50%;
 }
 
 .ui-node {
