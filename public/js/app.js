@@ -20,7 +20,7 @@ function runManifestoV3 () {
       ["data", "science", "and", "art"],
     ],
     styles: {
-      "font-size": "52px"
+      "font-size": "48px"
     },
     dotRadius: 5
   });

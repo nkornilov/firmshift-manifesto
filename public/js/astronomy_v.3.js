@@ -12,13 +12,13 @@ var specificNodes = {
   normal: [
     {
       id: 100000,
-      x: 24,
+      x: 23,
       y: 17
     },
     {
       id: 100001,
-      x: 154,
-      y: 62
+      x: 142,
+      y: 57
     }
   ],
   small: [{
@@ -159,12 +159,12 @@ function renderAnimation (options) {
         paths: global.paths,
         svgGroup: options.svgGroup
       }).then(() => setTimeout(() => {
-        destroyPaths().then(() => {
-          destroyNodes().then(() => {
-            global.currentNodesSet = getRandomSubArray(global.gatheredNodes);
-            renderAnimation(optionsSet);
-          })
-        });
+        // destroyPaths().then(() => {
+          // destroyNodes().then(() => {
+          //   global.currentNodesSet = getRandomSubArray(global.gatheredNodes);
+          //   renderAnimation(optionsSet);
+          // })
+        // });
       }, 2000))
     }, 1000)
   }, null);

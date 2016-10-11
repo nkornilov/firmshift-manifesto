@@ -2,6 +2,20 @@
     margin-top: 5%;
     width: 370px;
     font-size: 26px !important;
+    padding-bottom: 60px;
+}
+
+.ui-contacts-wrap {
+    width: 370px;
+}
+
+.ui-contact-icon, .ui-contacts-info {
+    height: 24px;
+}
+
+.ui-contacts-info {
+    padding: 4px;
+    font-size: 14px;
 }
 
 .ui-logo-add-dots:before {
@@ -30,7 +44,7 @@
 
 
 .ui-animation-header {
-    padding: 0 0 50%;
+    padding: 0 0 60%;
 }
 
 .ui-node {

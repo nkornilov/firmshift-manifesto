@@ -1,3 +1,16 @@
 .ui-animation-header {
     padding: 0 0 25%;
 }
+
+.ui-animation-container {
+    padding-bottom: 30px;
+}
+
+.ui-contact-icon, .ui-contact-info {
+    height: 22px;
+}
+
+.ui-contacts-info {
+    padding: 3px;
+    font-size: 14px;
+}

@@ -40,7 +40,7 @@ body.isAnimating {
     font-family: "Circular Book", Helvetica;
     font-size: 82px;
     font-weight: bold;
-    padding-bottom: 180px;
+    padding-bottom: 100px;
     opacity: 0;
 }
 
@@ -88,7 +88,7 @@ body.isAnimating {
 }
 
 .ui-animation-header {
-    padding: 0 0 28%;
+    padding: 0 0 32%;
 }
 
 .ui-logo-add-dots:before {
@@ -100,7 +100,7 @@ body.isAnimating {
     border-radius: 50%;
     background: #FFF;
     top: 12px;
-    left: 19px;
+    left: 18px;
 }
 
 .ui-logo-add-dots:after {
@@ -111,6 +111,60 @@ body.isAnimating {
     height: 10px;
     border-radius: 50%;
     background: #6E4A21;
-    top: 12px;
-    left: 149px;
+    top: 11px;
+    left: 137px;
+}
+
+.ui-string {
+    margin-top: -8px;
+}
+
+.ui-contacts-wrap {
+    font-weight: normal;
+    width: 700px;
+    margin: 0 auto;
+    opacity: .65;
+    -webkit-transition: .2s;
+    -moz-transition:    .2s;
+    -ms-transition:     .2s;
+    -o-transition:      .2s;
+    transition:         .2s;
+}
+
+.ui-contacts-wrap a {
+    text-decoration: none;
+}
+
+.ui-contacts-wrap:hover {
+    opacity: 1;
+    -webkit-transition: .2s;
+    -moz-transition:    .2s;
+    -ms-transition:     .2s;
+    -o-transition:      .2s;
+    transition:         .2s;
+}
+
+.ui-contacts-wrap .ui-contacts-info {
+    opacity: .3;
+}
+
+.ui-contacts-wrap:hover .ui-contacts-info {
+    opacity: 1;
+}
+
+.ui-contact-icon {
+    cursor: pointer;
+    width: auto;
+}
+
+.ui-contacts-info {
+    padding: 11px;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.ui-contact-icon, .ui-contacts-info {
+    display: inline-block;
+    vertical-align: top;
+    height: 40px;
 }
