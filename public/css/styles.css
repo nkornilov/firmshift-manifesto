@@ -123,7 +123,7 @@ body.isAnimating {
     font-weight: normal;
     width: 700px;
     margin: 0 auto;
-    opacity: .65;
+    opacity: 0;
     -webkit-transition: .2s;
     -moz-transition:    .2s;
     -ms-transition:     .2s;
@@ -142,14 +142,6 @@ body.isAnimating {
     -ms-transition:     .2s;
     -o-transition:      .2s;
     transition:         .2s;
-}
-
-.ui-contacts-wrap .ui-contacts-info {
-    opacity: .3;
-}
-
-.ui-contacts-wrap:hover .ui-contacts-info {
-    opacity: 1;
 }
 
 .ui-contact-icon {

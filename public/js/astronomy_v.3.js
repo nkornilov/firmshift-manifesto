@@ -127,6 +127,7 @@ function astronomy_v3(options) {
   prepareRegion(options);
   appendArrayOfStrings(options).then(() => {
     $(options.region).animate({ opacity: 1 }, 1000, () => {
+      $(".js-contacts").animate({ opacity: .65}, 1000);
       d3.select(options.svgRegion).selectAll("*").remove();
       
       options.svg = d3.select(options.svgRegion).append("svg:svg")
