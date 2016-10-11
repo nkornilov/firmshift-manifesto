@@ -35,7 +35,7 @@ body.isAnimating {
 .ui-animation-container  {
     color: #EA5C65;
     position: relative;
-    margin: 2% auto 0;
+    margin: 0 auto;
     width: 700px;
     font-family: "Circular Book", Helvetica;
     font-size: 82px;

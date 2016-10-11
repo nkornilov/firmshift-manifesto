@@ -1,12 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  runManifesto();
+  runManifestoV3();
 
-  $(window).resize(_.throttle(runManifesto, 250));
+  var timerId;
+  window.onresize = function(){
+    clearTimeout(timerId);
+    timerId = setTimeout(runManifestoV3, 100);
+  };
+
 });
 
-function runManifesto () {
-  astronomy_v2({
+function runManifestoV3 () {
+  astronomy_v3({
     region: ".js-animation-container",
     text: [
       ["We", "create", "meaningful"],
@@ -20,4 +25,3 @@ function runManifesto () {
     dotRadius: 5
   });
 }
-

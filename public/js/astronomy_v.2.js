@@ -56,17 +56,19 @@ function astronomy_v2(options) {
     $svgRegion.empty();
   }
 
-  $(options.region).addClass("ui-animation-container");
   $(options.region).css(options.styles);
 
   options.textRegion = ".js-animation-phrase";
   options.svgRegion = ".js-animation-wrap";
 
   animateWordsFadeIn(options).then(function (nodes) {
-    appendNodesAndDrawPath({
-      nodes: nodes,
-      region: options.svgRegion
-    })
+    setTimeout(function () {
+      appendNodesAndDrawPath({
+        nodes: nodes,
+        region: options.svgRegion
+      })
+    }, 1000)
+
   }, null);
 }
 
@@ -150,12 +152,11 @@ function appendNodesAndDrawPath(options) {
   options.svgGroup = svg.append("svg:g")
     .attr("class", "ui-svg-group");
 
-
-  renderAnimation(options);
-
-  global.animationIntervalId = setInterval(function () {
-    renderAnimation(options);
-  }, 8500);
+  // renderAnimation(options);
+  //
+  // global.animationIntervalId = setInterval(function () {
+  //   renderAnimation(options);
+  // }, 8500);
 
 }
 
@@ -212,7 +213,7 @@ function appendLines(options) {
       if (iterations > options.nodes.length * 50) break;
 
       if (notSameNode && notSameRow) {
-        appendedPaths.push({source: source, target: target});
+        appendedPaths.push({ source: source, target: target });
         if (yetNoPath) {
           setTimeout(function () {
             appendLineAstronomy(source, target, options.svgGroup, durationForCreate * getRandomArbitrary(1.5, 3));
@@ -224,13 +225,13 @@ function appendLines(options) {
     }
     setTimeout(function () {
       hideLines(appendedPaths, options.svgGroup);
-    }, 5500)
+    }, 5500);
   })
 }
 
 function hideLines(paths, svgGroup) {
   _.each(paths, function (path) {
-    hideLine(path.source, path.target, 600)
+    hideLine(path.source, path.target, 200)
   });
   hideNodes(svgGroup, 900);
 }
