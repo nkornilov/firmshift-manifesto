@@ -65,17 +65,17 @@ function prepareRegion(options) {
 }
 
 function appendArrayOfStrings(options) {
-  return new Promise((resolve, reject) => {
+  return new Promise(function (resolve, reject) {
     var index = 0;
-    _.each(options.text, (phrase, j)  => {
+    _.each(options.text, function (phrase, j) {
       $(options.textRegion).append(getStringTemplate(j));
       var $currentString = $(".js-string-" + j);
-      _.each(phrase, (word, i) => {
+      _.each(phrase,function (word, i) {
         index++;
         var className = Math.random() > 0.5 ? "ui-upper" : "";
         $currentString.append(getWordTemplate(className, word));
         $currentString.append(getNodeTemplate("js-node-" + index));
-        let $currentNode = $(".js-node-" + index);
+        var $currentNode = $(".js-node-" + index);
         $currentNode.css({
           width: global.dotRadius * 2,
           height: global.dotRadius * 2
@@ -89,7 +89,7 @@ function appendArrayOfStrings(options) {
 function getNodes() {
   var nodes = _.clone(global.nodes);
   var $nodes = $(".js-node");
-  $nodes.each((i, ui) => {
+  $nodes.each(function (i, ui) {
     nodes.push({
       y: ui.offsetTop + global.dotRadius,
       x: ui.offsetLeft + global.dotRadius,
@@ -101,10 +101,10 @@ function getNodes() {
 }
 
 function renderNodes(options) {
-  return new Promise((resolve, reject) => {
-    _.each(options.nodes,(node, i) => {
+  return new Promise(function (resolve, reject) {
+    _.each(options.nodes, function(node, i) {
         var timeout = global.durationForCreate * getRandomArbitrary(1, 3);
-        setTimeout(() => {
+        setTimeout(function () {
           options.svgGroup.append("circle")
             .attr("class", "ui-node-svg js-node-svg-" + node.id)
             .attr("cx", options.nodes[i].x)
@@ -125,9 +125,11 @@ function renderNodes(options) {
 
 function astronomy_v3(options) {
   prepareRegion(options);
-  appendArrayOfStrings(options).then(() => {
-    $(options.region).animate({ opacity: 1 }, 1000, () => {
-      $(".js-contacts").addClass("ui-visible");
+  appendArrayOfStrings(options).then(function () {
+    $(options.region).animate({ opacity: 1 }, 1000, function () {
+      $(".js-contacts").animate({ opacity: 1}, 800, function () {
+        $(this).find(".ui-contacts-info").animate({ opacity: 0 }, 4000);
+      });
       d3.select(options.svgRegion).selectAll("*").remove();
       
       options.svg = d3.select(options.svgRegion).append("svg:svg")
@@ -153,20 +155,22 @@ function renderAnimation (options) {
 
   options.svgGroup.selectAll("*").remove();
 
-  renderNodes(optionsSet).then(() => {
-    setTimeout(() => {
+  renderNodes(optionsSet).then(function () {
+    setTimeout(function () {
       global.paths = generatePaths(optionsSet);
       renderPaths({
         paths: global.paths,
         svgGroup: options.svgGroup
-      }).then(() => setTimeout(() => {
-        destroyPaths().then(() => {
-          destroyNodes().then(() => {
-            global.currentNodesSet = getRandomSubArray(global.gatheredNodes);
-            renderAnimation(optionsSet);
-          })
-        });
-      }, 2000))
+      }).then(function () {
+        setTimeout(function () {
+          destroyPaths().then(function () {
+            destroyNodes().then(function () {
+              global.currentNodesSet = getRandomSubArray(global.gatheredNodes);
+              renderAnimation(optionsSet);
+            })
+          });
+        }, 2000)
+      })
     }, 1000)
   }, null);
 }
@@ -174,17 +178,19 @@ function renderAnimation (options) {
 function shuffleAnimation (optionsSet) {
   var shuffledNodes = shuffleNodesArray(global.currentNodesSet, global.gatheredNodes);
   global.currentNodesSet = shuffledNodes.nodes;
-  _.each(shuffledNodes.removed, (node, i) => {
+  _.each(shuffledNodes.removed, function (node, i) {
     var pathRemoveDuration = global.durationForCreate * getRandomArbitrary(2, 3);
     destroyAllPathsByNode(node, pathRemoveDuration);
     if (i == shuffledNodes.removed.length - 1) {
-      setTimeout(() => {
+      setTimeout(function () {
         optionsSet.nodes = shuffledNodes.nodes;
-        _.each(shuffledNodes.removed, (node, i) => {
+        _.each(shuffledNodes.removed, function (node, i) {
           var nodeRemoveDuration = global.durationForCreate * getRandomArbitrary(2, 3);
           destroyNode(node, nodeRemoveDuration);
           if (i == shuffledNodes.removed.length - 1) {
-            setTimeout(() => renderAnimation(optionsSet), nodeRemoveDuration);
+            setTimeout(function () {
+              renderAnimation(optionsSet), nodeRemoveDuration
+            });
           }
         });
       }, pathRemoveDuration);
@@ -236,8 +242,8 @@ function generatePaths(options) {
 }
 
 function renderPaths (options) {
-  return new Promise((resolve, reject) => {
-    _.each(options.paths, (path, i) => {
+  return new Promise(function (resolve, reject) {
+    _.each(options.paths, function (path, i) {
       var duration = global.durationForCreate * getRandomArbitrary(1.5, 3);
       renderPath(path, options.svgGroup, duration);
       if (i == options.paths.length - 1) {
@@ -260,8 +266,8 @@ function renderPath (path, svgGroup, duration) {
 }
 
 function destroyPaths () {
-   return new Promise((resolve, reject) => {
-     _.each(global.paths, (path, i) =>  {
+   return new Promise(function (resolve, reject) {
+     _.each(global.paths, function (path, i)  {
        var durationForDestroy = global.durationForCreate * getRandomArbitrary(1, 3);
        destroyPath(path, durationForDestroy);
        if (i === global.paths.length - 1) {
@@ -306,10 +312,12 @@ function destroyAllPathsByNode (node, duration) {
 }
 
 function destroyNodes () {
-  return new Promise((resolve, reject) => {
-    _.each(global.currentNodesSet, (node, i) =>  {
+  return new Promise(function (resolve, reject) {
+    _.each(global.currentNodesSet, function (node, i) {
       var durationForDestroy = global.durationForCreate * getRandomArbitrary(1, 3);
-      setTimeout(() => destroyNode(node, 200), durationForDestroy);
+      setTimeout(function (){
+        destroyNode(node, 200);
+      }, durationForDestroy);
       if (i === global.paths.length - 1) {
         setTimeout(resolve, durationForDestroy)
       }
