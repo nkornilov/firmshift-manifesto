@@ -17,7 +17,7 @@ function runManifestoV3 () {
       ["We", "create", "meaningful"],
       ["data-driven", "user", "experiences"],
       ["using", "advanced", "technology"],
-      ["data", "science", "and", "art"],
+      ["data", "science", "and", "art"]
     ],
     styles: {
       "font-size": "48px"
