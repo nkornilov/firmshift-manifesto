@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var timerId;
   window.onresize = function(){
     clearTimeout(timerId);
-    timerId = setTimeout(runManifestoV3, 100);
+    timerId = setTimeout(runManifestoV3, 300);
   };
 
 });
