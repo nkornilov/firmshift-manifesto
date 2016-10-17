@@ -12,25 +12,27 @@ var specificNodes = {
   normal: [
     {
       id: 100000,
-      x: 24,
-      y: 16
+      x: 24.5,
+      y: 18
     },
     {
       id: 100001,
       x: 152,
-      y: 56
+      y: 59
     }
   ],
-  small: [{
-    id: 100000,
-    x: 12,
-    y: 8
-  },
+  small: [
+    {
+      id: 100000,
+      x: 13,
+      y: 10
+    },
     {
       id: 100001,
       x: 82,
-      y: 30
-    }]
+      y: 32
+    }
+  ]
 };
 
 function prepareRegion(options) {
@@ -46,7 +48,7 @@ function prepareRegion(options) {
   var $svgRegion = $(".js-animation-wrap");
 
   if ($textRegion.length == 0) {
-    $(options.region).append("<div class='js-animation-phrase'></div>");
+    $(options.region).append("<div class='js-animation-phrase ui-vertical-align-helper'></div>");
   } else {
     $textRegion.empty();
   }
@@ -86,12 +88,13 @@ function appendArrayOfStrings(options) {
   })
 }
 
-function getNodes() {
+function getNodes(options) {
   var nodes = _.clone(global.nodes);
   var $nodes = $(".js-node");
+  var containersTop = $(options.textRegion)[0].offsetTop;
   $nodes.each(function (i, ui) {
     nodes.push({
-      y: ui.offsetTop + global.dotRadius,
+      y: containersTop + ui.offsetTop + global.dotRadius,
       x: ui.offsetLeft + global.dotRadius,
       id: i
     })
@@ -126,6 +129,7 @@ function renderNodes(options) {
 function astronomy_v3(options) {
   prepareRegion(options);
   appendArrayOfStrings(options).then(function () {
+    var regionHeight = $(options.region).height();
     $(options.region).animate({ opacity: 1 }, 1000, function () {
       $(".js-contacts").animate({ opacity: 1}, 800, function () {
         $(this).find(".ui-contacts-info").animate({ opacity: 0 }, 4000);
@@ -136,9 +140,11 @@ function astronomy_v3(options) {
         .attr("class", "ui-svg-container");
 
       options.svgGroup = options.svg.append("svg:g")
-        .attr("class", "ui-svg-group");
+        .attr("class", "ui-svg-group ui-vertical-align-helper");
 
-      global.gatheredNodes = getNodes();
+      
+      console.log(options )
+      global.gatheredNodes = getNodes(options);
       global.currentNodesSet = getRandomSubArray(global.gatheredNodes);
       renderAnimation(options);
     });

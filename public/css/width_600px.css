@@ -1,0 +1,7 @@
+.ui-animation-container, .ui-logo { font-size: 26px !important; }
+.ui-vertical-align-helper { top: calc(50% - 148px); }
+.ui-animation-width { width: 375px; }
+.ui-logo-wrap { height: 35px; }
+.ui-contacts-wrap { margin-top: 25px; left: calc(50% - 187px);}
+.ui-contact-icon, .ui-contacts-info { height: 24px; }
+.ui-contacts-info { padding: 3px;  font-size: 14px; }

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function runManifestoV3 () {
   astronomy_v3({
-    region: ".js-animation-container",
+    region: ".js-container",
     text: [
       ["We", "create", "meaningful"],
       ["data-driven", "user", "experiences"],
