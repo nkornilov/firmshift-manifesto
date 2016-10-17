@@ -1,0 +1,15 @@
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+    .ui-vertical-align-helper { top: calc(50% - 130px);}
+    .ui-contacts-wrap { top: 83%; }
+}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+    .ui-vertical-align-helper { top: calc(50% - 130px);}
+    .ui-contacts-wrap { top: 88%; }
+}
